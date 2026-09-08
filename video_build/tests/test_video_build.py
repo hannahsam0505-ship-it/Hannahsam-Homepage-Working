@@ -35,3 +35,15 @@ def test_duck_filter_keeps_original_audio_foreground():
     assert "sidechaincompress" in f
     assert "amix" in f
     assert "normalize=0" in f
+
+
+def test_capture_plan_records_live_pages_without_visual_transform():
+    m = load_module()
+    plan = m.capture_plan()
+    assert plan["viewport"] == (1280, 720)
+    assert plan["intro"]["url"] == "https://hsam05.com/auto-show1"
+    assert plan["sample"]["url"] == "https://hsam05.com/sample-test"
+    assert plan["six_steps"]["url"] == "https://hsam05.com/learning"
+    assert plan["preserve_live_page"] is True
+    assert plan["no_crop"] is True
+    assert plan["no_scale"] is True
