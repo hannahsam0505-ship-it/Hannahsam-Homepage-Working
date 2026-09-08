@@ -46,3 +46,17 @@ def duck_filter():
         "[bgm][0:a]sidechaincompress=threshold=0.025:ratio=8:attack=15:release=350[ducked];"
         "[0:a][ducked]amix=inputs=2:duration=first:normalize=0[aout]"
     )
+
+
+def capture_plan():
+    # Capture the live pages as-is. Do not crop, scale, redesign, replace text, or reorder scenes.
+    # Audio mixing happens only after the live-page recording is complete.
+    return {
+        "viewport": (1280, 720),
+        "preserve_live_page": True,
+        "no_crop": True,
+        "no_scale": True,
+        "intro": {"url": "https://hsam05.com/auto-show1"},
+        "sample": {"url": "https://hsam05.com/sample-test"},
+        "six_steps": {"url": "https://hsam05.com/learning"},
+    }
