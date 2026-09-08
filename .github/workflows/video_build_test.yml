@@ -1,0 +1,19 @@
+name: video-build-test
+
+on:
+  push:
+    branches: [sns-video-build-20260908]
+    paths:
+      - 'video_build/**'
+      - '.github/workflows/video_build_test.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pytest
+      - run: pytest -q video_build/tests/test_video_build.py
